@@ -31,14 +31,15 @@
 <div class="header">
 	<div class="head-top">
 			<div class="logo">
-				<h1><a href="<?= base_url(); ?>">Moto Int'l</a></h1>
+				<h1><a href="<?php echo base_url('helps'); ?>">Motor Int'l</a></h1>
 			</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
 					<li><a class="color8" href="<?php echo base_url(); ?>">Home</a></li>
 					<li><a class="color8" href="#new">New</a></li>		
 					<li><a class="color4" href="<?php echo base_url('compare'); ?>">Compare</a></li>	
-					<li><a class="color4" href="<?php echo base_url('blogs'); ?>">Blogs</a></li>		
+					<li><a class="color4" href="<?php echo base_url('blogs'); ?>">Blogs</a></li>
+					<li><a class="color4" href="<?php echo base_url('helps'); ?>">Helps</a></li>			
 					<li><a class="color4" href="<?php echo base_url('login'); ?>">LogIn</a></li>
 			  </ul> 
 			</div>

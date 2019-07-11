@@ -53,6 +53,7 @@ class Spare extends CI_Controller{
         
                 $this->form_validation->set_rules('name', 'Name', 'required');
                 $this->form_validation->set_rules('description', 'Description', 'required');
+                $this->form_validation->set_rules('quantity', 'Quantity', 'required');
                 $this->form_validation->set_rules('price', 'Price ', 'required');
                 $this->form_validation->set_rules('created', 'Created', 'required');
                 $this->form_validation->set_rules('modified', 'Modified', 'required');
@@ -73,6 +74,7 @@ class Spare extends CI_Controller{
                     
                     $name = $this->input->post('name');
                     $description= $this->input->post('description');
+                    $quantity= $this->input->post('quantity');
                     $price = $this->input->post('price');
                     $created=$this->input->post('created');
                     $modified = $this->input->post('modified');
@@ -83,7 +85,7 @@ class Spare extends CI_Controller{
                     $data = $this->upload->data('image');
                     $image= $data['file_name']; 
                     
-                    $this->model_spare->insert($image,$name,$description,$price,$created,$modified,$status);
+                    $this->model_spare->insert($quantity,$image,$name,$description,$price,$created,$modified,$status);
                     $this->session->set_flashdata('message','Vehicle parts Successfully Created.');
                     redirect(base_url('admin/spare'));
                 

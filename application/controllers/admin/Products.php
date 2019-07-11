@@ -52,9 +52,11 @@ class Products extends CI_Controller{
         
                 $this->form_validation->set_rules('name', 'Name', 'required');
                 $this->form_validation->set_rules('description', 'Description', 'required');
+                $this->form_validation->set_rules('quantity', 'Quantity', 'required');
                 $this->form_validation->set_rules('price', 'Price ', 'required');
                 $this->form_validation->set_rules('created', 'Created', 'required');
                 $this->form_validation->set_rules('modified', 'Modified', 'required');
+                $this->form_validation->set_rules('hand', 'Hand', 'required');
 
                 if($this->form_validation->run() == FALSE)
                 {
@@ -72,17 +74,19 @@ class Products extends CI_Controller{
                     
                     $name = $this->input->post('name');
                     $description= $this->input->post('description');
+                    $quantity= $this->input->post('quantity');
                     $price = $this->input->post('price');
                     $created=$this->input->post('created');
                     $modified = $this->input->post('modified');
                     $status = 1;
+                    $hand = $this->input->post('hand');
 
                     
                     $this->upload->do_upload('image');
                     $data = $this->upload->data('image');
                     $image= $data['file_name']; 
                     
-                    $this->product->insert($image,$name,$description,$price,$created,$modified,$status);
+                    $this->product->insert($quantity,$image,$name,$description,$price,$created,$modified,$status,$hand);
                     $this->session->set_flashdata('message','Vehicle parts Successfully Created.');
                     redirect(base_url('admin/products'));
                 

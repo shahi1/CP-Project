@@ -13,7 +13,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Add Customar Details</h2>
+                        <h2>Add Details</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                             <li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -39,16 +39,23 @@
                                     <div class="col-xs-6">
                                         <input name="c_email" class="form-control" value="<?php echo set_value('c_email'); ?>"  placeholder="Email Address(User Name)" >
                                     </div>
+                                    <div class="col-xs-6">
+                                        <input type="number" min="0" max=""class="form-control" name="quantity" placeholder="Quantity of vehicle" required="" value="<?php echo set_value('quantity'); ?>">
+                                    </div>
+                    
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <br>
                                         <input  class="form-control" name="s_price" value="<?php echo set_value('s_price'); ?>" placeholder="Payment Amount" >
-                                    </div><br>
+                                    </div>
                                     <div class="col-xs-6">
                                         <br>
-                                        <input  class="form-control" name="s_status" value="<?php echo set_value('s_status'); ?>" placeholder="Book/Sell" >
-                                    </div><br>
+                                        <select class="form-control" name="s_status" >
+                                            <option value="book">Book</option>
+                                            <option value="sold">Sell</option>
+                                        </select>
+                                    </div>
                                 </div><br>
                                 <div class="row">
                                     <div class="col-xs-6">

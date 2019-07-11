@@ -1,4 +1,4 @@
-<?php $this->load->view('public/partials/login.php'); ?>
+<?php $this->load->view('public/partials/public_header.php'); ?>
 
 <style type="text/css">
 	.container-fluid{

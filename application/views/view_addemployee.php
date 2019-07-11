@@ -37,9 +37,6 @@
                                 <div class="form-group">
                                     Address: <textarea rows="3" cols="10" class="form-control"  name="u_address"></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <input type="radio" name="u_type" value="employee"> Cutomer
-                                </div>
                                 <br/>
                                 <input type="submit" name="buttonSubmit" value="Comfirm" class="btn btn-success" />
                             </fieldset>

@@ -32,6 +32,7 @@ CREATE TABLE `customer` (
   `cf_name` varchar(100) NOT NULL,
   `cl_name` varchar(100) NOT NULL,
   `c_email` varchar(100) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `c_mobile` varchar(100) NOT NULL,
   `nid` varchar(100) DEFAULT NULL,
   `w_start` date NOT NULL,
@@ -47,10 +48,10 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`c_id`, `vehicle_id`, `cf_name`, `cl_name`, `c_email`, `c_mobile`, `nid`, `w_start`, `w_end`, `payment_type`, `invoice_id`, `c_address`, `c_pass`, `extra`) VALUES
-(3, 7, 'wew', 'gasd', 'asdas@asdfasdf.co', '5556416556', NULL, '2016-12-29', '2017-01-25', 'Cash', NULL, NULL, '1234', NULL),
-(13, 12, 'Fqewq', 'Akter', 'asdasd@asdas.com', '23', NULL, '2016-12-29', '0022-02-02', 'Cash', NULL, NULL, '1234', NULL),
-(14, 8, 'sdad', 'dsad', 'dranger2011@gmail.com', '3133388055', NULL, '2016-12-29', '2016-11-30', 'Cash', NULL, NULL, '1234', NULL);
+INSERT INTO `customer` (`c_id`, `vehicle_id`, `cf_name`, `cl_name`, `c_email`,`quantity`,`c_mobile`, `nid`, `w_start`, `w_end`, `payment_type`, `invoice_id`, `c_address`, `c_pass`, `extra`) VALUES
+(3, 7, 'wew', 'gasd', 'asdas@asdfasdf.co',1, '5556416556', NULL, '2016-12-29', '2017-01-25', 'Cash', NULL, NULL, '1234', NULL),
+(13, 12, 'Fqewq', 'Akter', 'asdasd@asdas.com',1, '23', NULL, '2016-12-29', '0022-02-02', 'Cash', NULL, NULL, '1234', NULL),
+(14, 8, 'sdad', 'dsad', 'dranger2011@gmail.com',1, '3133388055', NULL, '2016-12-29', '2016-11-30', 'Cash', NULL, NULL, '1234', NULL);
 
 -- --------------------------------------------------------
 
@@ -151,25 +152,27 @@ CREATE TABLE `vehicles` (
   `doors` int(11) NOT NULL,
   `seats` int(11) NOT NULL,
   `tank` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `engine_no` int(11) NOT NULL,
   `chesis_no` int(11) NOT NULL,
-  `featured` int(11) DEFAULT '0'
+  `featured` int(11) DEFAULT '0',
+  `hand` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vehicles`
 --
 
-INSERT INTO `vehicles` (`vehicle_id`, `manufacturer_id`, `model_id`, `category`, `buying_price`, `selling_price`, `mileage`, `color`, `add_date`, `sold_date`, `status`, `registration_year`, `insurance_id`, `user_id`, `gear`, `doors`, `seats`, `tank`, `image`, `engine_no`, `chesis_no`, `featured`) VALUES
-(2, 16, 9, 'car', 12000100, NULL, 55, 'red', '2016-12-27 12:00:00', NULL, 'available', 2010, 2147483647, 1, 'auto', 6, 2147483647, 25, '77303.jpg', 2147483647, 21231231, 1),
-(5, 18, 9, 'car', 10000200, NULL, 25, 'black', '2016-12-27 12:00:00', NULL, 'available', 2010, 4545656, 1, 'auto', 87489796, 4, 25, 'bughatti.jpg', 2147483647, 21231231, 1),
-(7, 19, 10, 'car', 11000100, 12000100, 25, 'black', '2016-12-27 12:00:00', '2016-12-29 00:00:00', 'sold', 2010, 4545656, 1, 'auto', 87489796, 4, 25, 'bughatti.jpg', 2147483647, 21231231, NULL),
-(8, 20, 9, 'car', 10000100, 1000, 556, 'Yellow', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'sold', 2012, 2147483647, 1, 'auto', 4, 4, 25, 'yellow-lamborghini-gallardo-Wallpaper.jpg', 2147483647, 2147483647, NULL),
-(12, 21, 9, 'car', 20000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'available', 2001, 121212, 1, 'auto', 2, 3, 34, '7538.jpg', 23232, 232323, 1),
-(13, 22, 5, 'car', 30000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'available', 2001, 121212, 1, 'auto', 2, 3, 34, '1.jpg', 23232, 232323, 1),
-(14, 23, 5, 'car', 40000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'available', 2001, 121212, 1, 'auto', 2, 3, 34, '2.jpg', 23232, 232323, 1),
-(15, 24, 5, 'car', 50000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'book', 2001, 121212, 1, 'auto', 2, 3, 34, '3.jpg', 23232, 232323, 1);
+INSERT INTO `vehicles` (`vehicle_id`, `manufacturer_id`, `model_id`, `category`, `buying_price`, `selling_price`, `mileage`, `color`, `add_date`, `sold_date`, `status`, `registration_year`, `insurance_id`, `user_id`, `gear`, `doors`, `seats`, `tank`,`quantity`,`image`, `engine_no`, `chesis_no`, `featured`,`hand`) VALUES
+(2, 16, 9, 'car', 12000100, NULL, 55, 'red', '2016-12-27 12:00:00', NULL, 'available', 2010, 2147483647, 1, 'auto', 6, 2147483647, 25,2, '77303.jpg', 2147483647, 21231231, 1, 'new'),
+(5, 18, 9, 'car', 10000200, NULL, 25, 'black', '2016-12-27 12:00:00', NULL, 'available', 2010, 4545656, 1, 'auto', 87489796, 4, 25,3, 'bughatti.jpg', 2147483647, 21231231, 1, 'new'),
+(7, 19, 10, 'car', 11000100, 12000100, 25, 'black', '2016-12-27 12:00:00', '2016-12-29 00:00:00', 'sold', 2010, 4545656, 1, 'auto', 87489796, 4, 25,1, 'bughatti.jpg', 2147483647, 21231231, NULL, 'used'),
+(8, 20, 9, 'car', 10000100, 1000, 556, 'Yellow', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'sold', 2012, 2147483647, 1, 'auto', 4, 4, 25,4, 'yellow-lamborghini-gallardo-Wallpaper.jpg', 2147483647, 2147483647, NULL,'used'),
+(12, 21, 9, 'car', 20000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'available', 2001, 121212, 1, 'auto', 2, 3, 34,6, '7538.jpg', 23232, 232323, 1,'new'),
+(13, 22, 5, 'car', 30000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'available', 2001, 121212, 1, 'auto', 2, 3, 34,7, '1.jpg', 23232, 232323, 1,'used'),
+(14, 23, 5, 'car', 40000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'available', 2001, 121212, 1, 'auto', 2, 3, 34,4, '2.jpg', 23232, 232323, 1,'new'),
+(15, 24, 5, 'car', 50000, 20000000, 3, 'Black', '2016-12-28 12:00:00', '2016-12-29 00:00:00', 'book', 2001, 121212, 1, 'auto', 2, 3, 34, '3.jpg',1, 23232, 232323, 1,'new');
 --
 -- Indexes for dumped tables
 --
@@ -291,6 +294,7 @@ CREATE TABLE `order_items` (
 
 CREATE TABLE `products` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
+ `quantity` int(11) NOT NULL,
  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
  `description` text COLLATE utf8_unicode_ci NOT NULL,
@@ -299,20 +303,22 @@ CREATE TABLE `products` (
  `created` datetime NOT NULL,
  `modified` datetime NOT NULL,
  `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1' COMMENT '1=Active | 0=Inactive',
- PRIMARY KEY (`id`)
+ PRIMARY KEY (`id`),
+ `hand` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 
 INSERT INTO `products` VALUES
-(1,'1.jpg','R15 v3', 'This is fastest bike','bike', 30000, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1),
-(2,'2.jpg','ktm', 'This is fastest bike','bike', 3411, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1),
-(3,'3.jpg','Royal Enfield', 'This is fastest bike','bike', 23232, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1),
-(7,'bughatti.jpg','Bughatti','This is the fastest car','car','3000000','2016-12-28 12:00:00', '2016-12-29 00:00:00', 1),
-(8,'yellow-lamborghini-gallardo-Wallpaper.jpg','Lemborgini','This is fastest car','car','40000000','2016-12-28 12:00:00', '2016-12-29 00:00:00', 1);
+(1,2,'1.jpg','R15 v3', 'This is fastest bike','bike', 30000, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1,'new'),
+(2,1,'2.jpg','ktm', 'This is fastest bike','bike', 3411, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1,'new'),
+(3,4,'3.jpg','Royal Enfield', 'This is fastest bike','bike', 23232, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1,'used'),
+(7,3,'bughatti.jpg','Bughatti','This is the fastest car','car','3000000','2016-12-28 12:00:00', '2016-12-29 00:00:00', 1,'new'),
+(8,5,'yellow-lamborghini-gallardo-Wallpaper.jpg','Lemborgini','This is fastest car','car','40000000','2016-12-28 12:00:00', '2016-12-29 00:00:00', 1,'used');
 
 CREATE TABLE `spare` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
+ `quantity` int(11) NOT NULL,
  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
  `description` text COLLATE utf8_unicode_ci NOT NULL,
@@ -340,3 +346,19 @@ CREATE TABLE `blog` (
   `name` varchar(100) NOT NULL,
   `message` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `user` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `oauth_provider` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+ `oauth_uid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+ `first_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+ `last_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+ `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+ `gender` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `locale` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `picture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+ `created` datetime NOT NULL,
+ `modified` datetime NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

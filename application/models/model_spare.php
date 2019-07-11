@@ -14,9 +14,10 @@ class model_spare extends CI_Model{
      * Fetch products data from the database
      * @param id returns a single record if specified, otherwise all records
      */
-    public function insert($image,$name,$description,$price,$created,$modified,$status)
+    public function insert($quantity,$image,$name,$description,$price,$created,$modified,$status)
     {
         $data = array(
+            'quantity'=>$quantity,
             'image' => $image,
             'name' => $name,
             'description' => $description,

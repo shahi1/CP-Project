@@ -13,9 +13,8 @@ class Employee extends CI_Controller {
 	}
 	public function index()
 	{	
-        $data['emp'] = $this->model_employee->getAll();
 
-        $this->parser->parse('view_employee', $data);  
+        $this->load->view('view_login');  
     }
 
 	public function add()
@@ -36,11 +35,12 @@ class Employee extends CI_Controller {
                 $u_pass = md5($this->input->post('u_pass'));
                 $u_bday = $this->input->post('u_bday');
                 $u_position = $this->input->post('u_position');
-                $u_type = $this->input->post('u_type');
+                $u_type = 'employee';
                 $u_mobile = $this->input->post('u_mobile');
                 $u_gender = $this->input->post('u_gender');
                 $u_address = $this->input->post('u_address');
 				$this->model_employee->insert($u_email,$f_name,$l_name,$u_bday,$u_position,$u_type,$u_pass,$u_mobile,$u_gender,$u_address);
+
 				$this->session->set_flashdata('message','Employee Successfully Created.');
 				redirect(base_url('employee'));
 			}

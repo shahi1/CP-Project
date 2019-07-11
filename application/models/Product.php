@@ -14,9 +14,10 @@ class Product extends CI_Model{
      * Fetch products data from the database
      * @param id returns a single record if specified, otherwise all records
      */
-  public function insert($image,$name,$description,$price,$created,$modified,$status)
+  public function insert($quantity,$image,$name,$description,$price,$created,$modified,$status,$hand)
     {
         $data = array(
+            'quantity'=>$quantity,
             'image' => $image,
             'name' => $name,
             'description' => $description,
@@ -24,6 +25,8 @@ class Product extends CI_Model{
             'created'=>$created,
             'modified' => $modified,
             'status' => $status,
+            'hand' => $hand
+
         );
 
         $this->db->insert('products', $data); 

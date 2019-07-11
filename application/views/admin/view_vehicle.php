@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-xs-6">
                             <br>
-                            <input type="number" step="any" class="form-control" name="b_price" placeholder="Buying Price" required>
+                            <input type="number" step="any" min="0" class="form-control" name="b_price" placeholder="Buying Price" required>
                         </div>
                     </div>
                             
@@ -67,7 +67,7 @@
                         <div class="col-xs-6">
                         <br>
                             <label for="mileage">Mileage:</label>
-                            <input type="text" step="any" class="form-control" name="mileage" placeholder="Mileage(km)" required>
+                            <input type="text" step="any" min="0" class="form-control" name="mileage" placeholder="Mileage(km)" required>
                         </div>
                     </div>
                             
@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-xs-6">
                             <br>
-                            <input type="number" class="form-control" name="doors" placeholder="No of Doors" required>
+                            <input type="number" min="0" max="4" class="form-control" name="doors" placeholder="No of Doors" required>
                         </div>
                     </div>
                             
@@ -116,7 +116,7 @@
                             <input type="number"class="form-control" name="seats" placeholder="No of seats" required>
                         </div>
                         <div class="col-xs-6">
-                            <input type="number" step="any" class="form-control" name="tank" placeholder="Tank Capacity(litters)" required>
+                            <input type="number" min="0" class="form-control" name="tank" placeholder="Tank Capacity(litters)" required>
                         </div>
                     </div>
                     <br>
@@ -138,6 +138,20 @@
                                 <option value="1">Yes</option>
                             </select>
                         </div>
+                        <br>
+                        <div class="col-xs-6">
+                            <input type="number" min="0" class="form-control" name="quantity" placeholder="Quantity" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <select class="form-control" name="hand" >
+                                <option value="used">Used</option>
+                                <option value="new">New</option>
+                            </select>
+                        </div>
+                        
                     </div>
                     <br>
                     <input class="btn btn-primary" type="submit" name="buttonSubmit" value="Add New Vehicle" />
@@ -173,7 +187,9 @@
                                     <th>Image</th>
                                     <th>Action</th>
                                     <th>Bought $</th>
+                                    <th>Quantity</th>
                                     <th>Category</th>
+                                    <th></th>
                                     <th>Added on</th>
                                     <th>Status</th>
                                     <th>Sold on</th>
@@ -205,7 +221,9 @@
                                             <?php endif; ?>
                                         </td>
                                         <td><?php echo $vehicle['buying_price']; ?></td>
+                                        <td><?php echo $vehicle['quantity']; ?></td>
                                         <td><?php echo $vehicle['category']; ?></td>
+                                        <td><?php echo $vehicle['hand']; ?></td>
                                         <td><?php $date = new DateTime($vehicle['add_date']); echo $date->format('m/d/Y'); ?></td>
                                         
                                         <td><?php echo $vehicle['status']; ?></td>

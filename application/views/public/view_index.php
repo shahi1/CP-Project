@@ -7,7 +7,7 @@
 		$("#slider").responsiveSlides({
 			auto: true,
 			nav: true,
-			speed: 500,
+			speed: 700,
 		namespace: "callbacks",
 		pager: true,
 		});
@@ -19,7 +19,7 @@
 				<li>	
 					<div class="banner-text">
 						<h3>Easy Comparision</h3>
-						<p>With this site we can easily compare different vehicles in list</p>
+						<p>With this site you can easily compare different vehicles in list</p>
 							<ul>
 								<li><a class="color4" href="<?php echo base_url('compare'); ?>">Compare</a></li>			
 						  </ul> 
@@ -31,7 +31,7 @@
 					
 					<div class="banner-text">
 						<h3>Sign UP</h3>
-						<p>For buying and seeling different vehicles and their part You need to sign up your own account in this site</p>
+						<p>For buying and selling different vehicles and their part and to service your vehicle You need to sign up your own account in this site</p>
 							<ul>
 								<li><a class="color8" href="<?php echo base_url('employee/add'); ?>">SignUp</a></li>
 						  </ul> 
@@ -42,7 +42,7 @@
 				<li>
 					<div class="banner-text">
 						<h3>Sign In</h3>
-						<p>You can sign In and can take benefit of this site</p>
+						<p>If you have account You can sign In and can take benefit of this site</p>
 							<ul>
 								<li><a class="color4" href="<?php echo base_url('login'); ?>">LogIn</a></li>
 						  </ul> 

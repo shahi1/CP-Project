@@ -46,6 +46,7 @@
                                     <th>Price &amp; Profit</th>
                                     <th>Date of Sale</th>
                                     <th>Warranty End</th>
+                                    <th>Quantity</th>
                                     <th>Insurance</th>
                                     <th>Engine#</th>
 									<th></th>
@@ -64,7 +65,7 @@
                                             <td><?php $date = new DateTime($vehicle['w_start']); echo $date->format('m/d/Y'); ?></td>
                                             <td><?php $date = new DateTime($vehicle['w_end']); echo $date->format('m/d/Y'); ?></td>
                                 
-                            
+                                            <td><?php echo $vehicle['quantity']; ?></td>
                             
                                              <td><?php echo $vehicle['insurance_id']; ?></td>
                                             <td><?php echo $vehicle['engine_no']; ?></td>

@@ -54,10 +54,10 @@
                 <ul class="nav side-menu">
                   <?php if($this->session->userdata('type') == "admin" ) : ?>
                   <li><a href="<?= base_url('admin/dashboard'); ?>"><i class="fa fa-home"></i> Dashboard </a></li>
-                  <li><a><i class="fa fa-edit"></i> Manage Customers <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Manage Users <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?= base_url('admin/employee/add'); ?>">Add new Customer</a></li>
-                      <li><a href="<?= base_url('admin/employee'); ?>">All Customer</a></li>
+                      <li><a href="<?= base_url('admin/employee/add'); ?>">Add new User</a></li>
+                      <li><a href="<?= base_url('admin/employee'); ?>">All User</a></li>
                     </ul>
                   </li>
                   
@@ -72,8 +72,9 @@
                     <?php endif; ?>
                   <li><a><i class="fa fa-table"></i> Vehicles <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
+                    <?php if($this->session->userdata('type') != "admin" ) : ?>
                       <li><a href="<?= base_url('admin/vehicles'); ?>">Sell/Book</a></li>
-                    
+                    <?php endif?>
                       <?php if($this->session->userdata('type') == "admin" ) : ?>
                         <li><a href="<?= base_url('admin/vehicles'); ?>">All Vehicles</a></li>
                       <li><a href="<?= base_url('admin/vehicles/soldlist'); ?>">Sold Vehicles</a></li>
@@ -84,11 +85,11 @@
                     </ul>
                   </li>
                   <?php if($this->session->userdata('type') == "admin" ) : ?>
-                    <li><a href="<?= base_url('admin/services'); ?>"><i class="fa fa-bell"></i> Dashboard </a></li>
+                    <li><a href="<?= base_url('admin/services'); ?>"><i class="fa fa-bell"></i> Vehicle Servicing Request </a></li>
                   <?php endif?>
 
                   <?php if($this->session->userdata('type') != "admin" ) : ?>
-                    <li><a href="<?= base_url('admin/services/add'); ?>"><i class="fa fa-rocket"></i> Dashboard </a></li>
+                    <li><a href="<?= base_url('admin/services/add'); ?>"><i class="fa fa-rocket"></i> Register Vehicle Servicing </a></li>
 
                   <?php endif?>
                 </ul>

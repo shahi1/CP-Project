@@ -28,6 +28,10 @@
                                 <label class="control-label">Description</label>
                                 <textarea class="form-control white_bg" name="description" rows="6" required=""></textarea>
                             </div>
+                            <div class="col-xs-6">
+                                <label>Vehicle Quantity</label>
+                                <input type="number"class="form-control" name="quantity" min="0">
+                            </div>
                     </div>
                     <br>
                         
@@ -46,6 +50,13 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <input type="file" class="form-control" name="image" >
+                        </div>
+                        <div class="col-xs-6">
+                            <select class="form-control" name="hand" >
+                                <option value="used">Used</option>
+                                <option value="new">New</option>
+                            </select>
+                            
                         </div>
                     </div>
                     <br>
@@ -86,7 +97,9 @@
                                     <div class="caption">
                                         <h4 class="pull-right">$<?php echo $row['price']; ?> USD</h4>
                                         <h4><?php echo $row['name']; ?></h4>
+                                        <h4>Qty(<?php echo $row['quantity']; ?>)</h4>
                                         <p><?php echo $row['description']; ?></p>
+                                        <p>This is <?php echo $row['hand']; ?></p>
                                     </div>
                                     <div class="atc">
                                         <a href="<?php echo base_url('admin/products/addToCart/'.$row['id']); ?>" class="btn btn-success">

@@ -28,6 +28,10 @@
                                 <label class="control-label">Description</label>
                                 <textarea class="form-control white_bg" name="description" rows="6" required=""></textarea>
                             </div>
+                            <div class="col-xs-6">
+                                <label>Parts Quantity</label>
+                                <input type="number"class="form-control" name="quantity" min="0">
+                            </div>
                     </div>
                     <br>
                         
@@ -69,10 +73,14 @@
         <!-- Cart info -->
         <div class="row">
 
+            <div>
                 <a href="<?php echo base_url('admin/cart'); ?>" class="cart-link" title="View Cart">
-                    <i class="glyphicon glyphicon-shopping-cart"></i>
-                    <span>(<?php echo $this->cart->total_items(); ?>)</span>
+                    <div class="col-lg-12">
+                        <h4>CART
+                    <span>(<?php echo $this->cart->total_items(); ?>)</span></h4>
+                    </div>
                 </a>
+            </div>
 
                 <!-- List all products -->
                 <div class="row">
@@ -84,6 +92,8 @@
                                     <div class="caption">
                                         <h4 class="pull-right">$<?php echo $row['price']; ?> USD</h4>
                                         <h4><?php echo $row['name']; ?></h4>
+                                        <h4>Qty(<?php echo $row['quantity']; ?>)</h4>
+
                                         <p><?php echo $row['description']; ?></p>
                                     </div>
                                     <div class="atc">

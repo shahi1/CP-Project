@@ -2,7 +2,7 @@
 
 class model_manufacturer extends CI_Model {
 
-	public function insertManufacturer($manufacturer_name, $manufacturer_logo="")
+	public function insertManufacturer($manufacturer_name, $manufacturer_logo)
 	{
 		$data = array(
 			'manufacturer_name' => $manufacturer_name,

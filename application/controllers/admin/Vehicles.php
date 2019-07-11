@@ -31,6 +31,7 @@ class Vehicles extends CI_Controller {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){	
             $cid = $this->input->post('vehicle_id');
             $cdata['cid'] = $cid;
+
             if(!$this->input->post('buttonSubmits'))
     		{
     			$data['message'] = '';
@@ -41,6 +42,7 @@ class Vehicles extends CI_Controller {
                 $this->form_validation->set_rules('cf_name', 'First Name', 'required');
                 $this->form_validation->set_rules('cl_name', 'Last Name', 'required');
                 $this->form_validation->set_rules('c_email', 'Email', 'required|valid_email');
+                $this->form_validation->set_rules('quantity', 'Quantity', 'required');
                 $this->form_validation->set_rules('c_mobile', 'Mobile', 'required|trim');
                 $this->form_validation->set_rules('s_price', 'Selling Price', 'required|numeric|greater_than[1]');
                 $this->form_validation->set_rules('s_status', 'Status', 'required');
@@ -56,6 +58,7 @@ class Vehicles extends CI_Controller {
                     $cf_name = $this->input->post('cf_name');
                     $cl_name = $this->input->post('cl_name');
                     $c_email = $this->input->post('c_email');
+                    $quantity = $this->input->post('quantity');
                     $s_price = $this->input->post('s_price');
                     $s_status = $this->input->post('s_status');
                     $c_mobile = $this->input->post('c_mobile');
@@ -64,7 +67,7 @@ class Vehicles extends CI_Controller {
                     $payment_type = $this->input->post('payment_type');
                     $c_pass = "1234";
 
-                    $this->model_vehicle->sell($v_id,$cf_name,$cl_name,$c_email,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass);
+                    $this->model_vehicle->sell($v_id,$cf_name,$cl_name,$c_email,$quantity,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass);
                     redirect(base_url('admin/vehicles'));
                 }
             }
@@ -92,9 +95,11 @@ class Vehicles extends CI_Controller {
 				$this->form_validation->set_rules('doors', 'Number of Doors', 'required');
 				$this->form_validation->set_rules('seats', 'Number of Seats', 'required');
 				$this->form_validation->set_rules('tank', 'Tank capacity', 'required');
+                $this->form_validation->set_rules('quantity', 'Quantity', 'required');
 				$this->form_validation->set_rules('e_no', 'Engine No', 'required');
 				$this->form_validation->set_rules('c_no', 'Chasis No', 'required');
 				$this->form_validation->set_rules('v_color', 'Color', 'required');		
+                $this->form_validation->set_rules('hand', 'Hand', 'required');  
 				
 				if($this->form_validation->run() == FALSE)
 				{
@@ -125,17 +130,19 @@ class Vehicles extends CI_Controller {
             $doors = $this->input->post('doors');
             $seats = $this->input->post('seats');
             $tank = $this->input->post('tank');
+            $quantity = $this->input->post('quantity');
             $e_no = $this->input->post('e_no');
             $c_no = $this->input->post('c_no');
             $u_id = $this->session->userdata('id');
             $v_color = $this->input->post('v_color');
             $featured = $this->input->post('featured');
-            
+            $hand = $this->input->post('hand');
+
             $this->upload->do_upload('image');
             $data = $this->upload->data('image');
             $image= $data['file_name']; 
 			
-            $this->model_vehicle->insert($featured,$image,$manufacturer_name,$model_name,$category,$b_price,$mileage,$add_date,$status,$registration_year,$insurance_id,$gear,$doors,$seats,$tank,$e_no,$c_no,$u_id,$v_color);
+            $this->model_vehicle->insert($featured,$image,$manufacturer_name,$model_name,$category,$b_price,$mileage,$add_date,$status,$registration_year,$insurance_id,$gear,$doors,$seats,$tank,$quantity,$e_no,$c_no,$u_id,$v_color, $hand);
 			$this->session->set_flashdata('message','Vehicle Successfully Created.');
 			redirect(base_url('admin/vehicles'));
 		

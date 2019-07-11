@@ -14,6 +14,10 @@
             <input placeholder="Password" type="password" name="password">
             <section class="links">
                 <button class="button"><span>LOGIN</span></button>
+                <br>
+            </section>
+            <section class="links">
+                <button class="button" style="background: red;"><span>Login with Google</span></button>
                 <br><br>
             </section>
             <ul style="list-style: none; text-align: center; color: white;">

@@ -2,7 +2,7 @@
 
 class model_vehicle extends CI_Model {
 
-	public function insert($featured,$image,$manufacturer_id,$model_id,$category,$buying_price,$mileage,$add_date,$status,$registration_year,$insurance_id,$gear,$doors,$seats,$tank,$engine_no,$chesis_no,$user_id,$color)
+	public function insert($featured,$image,$manufacturer_id,$model_id,$category,$buying_price,$mileage,$add_date,$status,$registration_year,$insurance_id,$gear,$doors,$seats,$tank,$quantity,$engine_no,$chesis_no,$user_id,$color,$hand)
 	{
 		$data = array(
 			'featured' => $featured,
@@ -19,11 +19,14 @@ class model_vehicle extends CI_Model {
 			'doors' => $doors,
 			'seats' => $seats,
 			'tank' => $tank,
+			'quantity' => $quantity,
 			'engine_no' => $engine_no,
 			'chesis_no' => $chesis_no,
 			'user_id' => $user_id,
 			'registration_year' => $registration_year,
-			'color' => $color
+			'color' => $color,
+			'hand' => $hand
+
         );
 
 		$this->db->insert('vehicles', $data); 
@@ -130,7 +133,7 @@ class model_vehicle extends CI_Model {
 	}
     
 
-    public function sell($v_id,$cf_name,$cl_name,$c_email,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass)
+    public function sell($v_id,$cf_name,$cl_name,$c_email,$quantity,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass)
 	{
 				
 		$data = array(
@@ -146,6 +149,7 @@ class model_vehicle extends CI_Model {
                'cf_name' => $cf_name,
                'cl_name' => $cl_name,
                'c_email' => $c_email,
+               'quantity'=>$quantity,
                'c_mobile' => $c_mobile,
                'w_start' => $w_start,
                'w_end' => $w_end,

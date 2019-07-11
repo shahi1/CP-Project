@@ -31,18 +31,19 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            <?php foreach($manufacturers as $row) : ?>
                             <tbody>
-                                {manufacturers}
                                     <tr>
-                                        <td>{id}</td>
-                                        <td>{manufacturer_name}</td>
-                                        <td>{manufacturer_logo}</td>
+                                        <td><?php echo $row['id']; ?></td>
+                                        <td><?php echo $row['manufacturer_name']; ?></td>
+                                        <td><img src="<?php echo base_url()."uploads/".$row['manufacturer_logo']; ?>" style="height: 80px; width: 50%"/></td>
                                         <th>
                                             <a href="<?= base_url('admin/manufacturers/deleteManufacturer/{id}')?>" class="btn btn-danger btn-xs" onclick=" return confirm('Are you sure to delete')">Delete</a>
                                         </th>
                                     </tr>
-                                {/manufacturers}
+                            
                             </tbody>
+                            <?php endforeach; ?>
                         </table>
                     </div> <!-- /content --> 
                 </div><!-- /x-panel --> 
