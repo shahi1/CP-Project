@@ -21,7 +21,7 @@
 				<a class="" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample"><h2>How to buy?</h2></a>
 	            <div class="col-xs-12">
 		            <div class="collapse" id="collapseExample1">
-		            	<h2>How to buy?</h2>
+		            	<p>In order to buy any products from this site you firt need to have account signup from sign up form. Then after this you will be able to see the buy vehicle option buy clicking it you can add the item you want to buy in cart and can process accordingly.</p>
 	            
 	            	</div>
 	        	</div> <!-- /row --> 
@@ -29,17 +29,27 @@
 				<a class="" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample"><h2>How to sell or book?</h2></a>
 	            <div class="col-xs-12">
 		            <div class="collapse" id="collapseExample2">
-		            	<h2>How to sell or book?</h2>
+		            	<p>After login into your account you can find sell or buy option vehicle dropdown. Then if you want to sell any vehicle you can sell. But first you need to request admin to add your vehicle then you can sell your vehicle.
+
+		            	Also You can book vehicle either used or new vehicle added to this site simply by clicking the sell/ book option and by filling form with book option in it.</p>
 	            	</div>
 	        	</div> <!-- /row --> 
 	        	<br>
 				<a class="" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample"><h2>How to create account?</h2></a>
 	            <div class="col-xs-12">
 		            <div class="collapse" id="collapseExample3">
-		            	<h2>How to create account?</h2>
+		            	<p>In order to create account you need to go login option of home page. Then you can see signup option below the login page. After that you can fill form and can procced your work.</p>
 	            
 	            	</div>
 	        	</div> <!-- /row --> 
+	        		        	<br>
+				<a class="" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample"><h2>How to service vehicle?</h2></a>
+	            <div class="col-xs-12">
+		            <div class="collapse" id="collapseExample4">
+		            	<p>After login the page you can find service your vehicle option. There you can see the nearest location by searching it in google map inbuit in this section and can fill form accordingly with your appropriate data and time.</p>
+	            
+	            	</div>
+	        	</div> <!-- /row -->
 			</div>
 		</div>
 
@@ -71,7 +81,7 @@
 			                        </div>
 			                    </div>
 			                    <br>
-			                    <input class="btn btn-primary" type="submit" name="buttonSubmit" value="Comment" />
+			                    <input class="btn btn-primary" type="submit" name="buttonSubmit" value="Submit" />
 			                                                            
 			                </fieldset>         
 			            </form>

@@ -28,7 +28,7 @@
                                     Email : <input class="form-control" placeholder="E-mail" name="u_email" id="username" type="email" onBlur="checkAvailability()" ><span id="user-availability-status"></span>
                                 </div>
                                 <div class="form-group">
-                                    Password : <input class="form-control" placeholder="Password" name="u_pass" type="password" >
+                                    Password : <input class="form-control" placeholder="Password of length 8" name="u_pass" type="password" maxlength="8">
                                 </div>
                                 <div class="form-group">
                                     First Name : <input class="form-control" placeholder="First Name" name="f_name" type="text"  >

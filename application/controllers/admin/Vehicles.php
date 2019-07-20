@@ -42,7 +42,7 @@ class Vehicles extends CI_Controller {
                 $this->form_validation->set_rules('cf_name', 'First Name', 'required');
                 $this->form_validation->set_rules('cl_name', 'Last Name', 'required');
                 $this->form_validation->set_rules('c_email', 'Email', 'required|valid_email');
-                $this->form_validation->set_rules('quantity', 'Quantity', 'required');
+                $this->form_validation->set_rules('c_quantity', 'Quantity', 'required');
                 $this->form_validation->set_rules('c_mobile', 'Mobile', 'required|trim');
                 $this->form_validation->set_rules('s_price', 'Selling Price', 'required|numeric|greater_than[1]');
                 $this->form_validation->set_rules('s_status', 'Status', 'required');
@@ -58,7 +58,7 @@ class Vehicles extends CI_Controller {
                     $cf_name = $this->input->post('cf_name');
                     $cl_name = $this->input->post('cl_name');
                     $c_email = $this->input->post('c_email');
-                    $quantity = $this->input->post('quantity');
+                    $c_quantity = $this->input->post('c_quantity');
                     $s_price = $this->input->post('s_price');
                     $s_status = $this->input->post('s_status');
                     $c_mobile = $this->input->post('c_mobile');
@@ -67,7 +67,9 @@ class Vehicles extends CI_Controller {
                     $payment_type = $this->input->post('payment_type');
                     $c_pass = "1234";
 
-                    $this->model_vehicle->sell($v_id,$cf_name,$cl_name,$c_email,$quantity,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass);
+                    $this->model_vehicle->sell($v_id,$cf_name,$cl_name,$c_email,$c_quantity,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass);
+
+                    $this->model_vehicle->update($c_quantity);
                     redirect(base_url('admin/vehicles'));
                 }
             }

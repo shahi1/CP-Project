@@ -2,11 +2,12 @@
 
 class model_service extends CI_Model {
 
-    public function insert($email, $name, $category,$from,$timing)
+    public function insert($email, $name,$location, $category,$from,$timing)
     {
         $data = array(
             'email' => $email,
             'name' => $name,
+            'location' => $location,
             'category' => $category,
             'from' => $from,
             'timing' => $timing

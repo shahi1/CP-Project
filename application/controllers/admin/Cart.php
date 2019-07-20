@@ -21,6 +21,7 @@ class Cart extends CI_Controller{
         
         // Retrieve cart data from the session
         $data['cartItems'] = $this->cart->contents();
+        $data['products'] = $this->product->getRows();
         
         // Load the cart view
         $this->load->view('admin/cart/cart', $data);

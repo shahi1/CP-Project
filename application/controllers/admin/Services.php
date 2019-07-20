@@ -29,6 +29,7 @@ class Services extends CI_Controller {
 		
 				$this->form_validation->set_rules('email', 'Email', 'required');
 				$this->form_validation->set_rules('name', 'Name', 'required');
+				$this->form_validation->set_rules('location', 'Location', 'required');
 				$this->form_validation->set_rules('category', 'Category ', 'required');
 				$this->form_validation->set_rules('from', 'From', 'required');
                 $this->form_validation->set_rules('timing', 'Timing', 'required');
@@ -41,13 +42,14 @@ class Services extends CI_Controller {
                       
             $email = $this->input->post('email');
 		    $name = $this->input->post('name');
+		    $location = $this->input->post('location');
             $category = $this->input->post('category');
             $from = $this->input->post('from');
         
             $timing = $this->input->post('timing');
 
 			
-            $this->model_service->insert($email, $name, $category,$from,$timing);
+            $this->model_service->insert($email, $name,$location, $category,$from,$timing);
 			$this->session->set_flashdata('message','Servicing request Created.');
 			redirect(base_url('admin/services'));
 		

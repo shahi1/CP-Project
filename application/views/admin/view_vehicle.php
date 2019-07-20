@@ -17,7 +17,7 @@
             <div class="col-md-8 col-md-offset-2">
             <div class="collapse" id="collapseExample">
             <?php echo validation_errors(); ?> 
-			<?php echo form_open_multipart('admin/vehicles/add'); ?>
+            <?php echo form_open_multipart('admin/vehicles/add'); ?>
                 <fieldset>
                     <div class="row">
                         <div class="col-xs-6">
@@ -207,10 +207,12 @@
                                         </td>
                                         <td>
                                             <?php if($vehicle['status']=="available") : ?>
+                                                <?php if ($this->session->userdata('type') !="admin") : ?>
                                                 <?php echo form_open('admin/Vehicles/sell/'); ?>
                                                     <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['vehicle_id']; ?>">
                                                     <button class="btn btn-xs btn-success" type="submit" name="btn-sell">Sell/Book</button>
                                                 </form>
+                                                <?php endif ?>
                                             <?php endif ?>
                                             <?php if ($this->session->userdata('type') =="admin") : ?>
                                                 
@@ -287,35 +289,35 @@
                 {
                   extend: "copy",
                   className: "btn-sm",
-				  exportOptions: {
+                  exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                 }
                 },
                 {
                   extend: "csv",
                   className: "btn-sm",
-				  exportOptions: {
+                  exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                 }
                 },
                 {
                   extend: "excel",
                   className: "btn-sm",
-				  exportOptions: {
+                  exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                 }
                 },
                 {
                   extend: "pdf",
                   className: "btn-sm",
-				  exportOptions: {
+                  exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                 }
                 },
                 {
                   extend: "print",
                   className: "btn-sm",
-				  exportOptions: {
+                  exportOptions: {
                     columns: [ 0, 1, 2, 3, 4, 5, 6 ]
                 }
                 },

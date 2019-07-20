@@ -40,7 +40,7 @@
                                         <input name="c_email" class="form-control" value="<?php echo set_value('c_email'); ?>"  placeholder="Email Address(User Name)" >
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="number" min="0" max=""class="form-control" name="quantity" placeholder="Quantity of vehicle" required="" value="<?php echo set_value('quantity'); ?>">
+                                        <input type="number" min="0" max=""class="form-control" name="c_quantity" placeholder="Quantity of vehicle" required="" value="<?php echo set_value('c_quantity'); ?>">
                                     </div>
                     
                                 </div>

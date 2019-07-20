@@ -51,19 +51,23 @@ class model_spare extends CI_Model{
     }
     
     public function getRows($id = ''){
-        $this->db->select('*');
+        $this->db->select($this->proTable.'.*, SUM(order_items.quantity) as sold');
+
         $this->db->from($this->proTable);
+        $this->db->join('order_items', 'order_items.product_id = '.$this->proTable.'.id', 'left');
+
         $this->db->where('status', '1');
         if($id){
-            $this->db->where('id', $id);
+            $this->db->where($this->proTable.'.id', $id);
+            $this->db->group_by($this->proTable.'.id');
             $query = $this->db->get();
             $result = $query->row_array();
         }else{
             $this->db->order_by('name', 'asc');
+            $this->db->group_by($this->proTable.'.id');
             $query = $this->db->get();
             $result = $query->result_array();
-        }
-        
+        }        
         // Return fetched data
         return !empty($result)?$result:false;
     }
@@ -146,4 +150,9 @@ class model_spare extends CI_Model{
         return $insert?true:false;
     }
     
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('spare');
+    }
 }

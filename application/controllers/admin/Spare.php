@@ -96,4 +96,17 @@ class Spare extends CI_Controller{
         }
     }
     
+    public function Deletespare()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){  
+             
+            $id = $this->input->post('id');
+            $this->model_spare->delete($id);
+            $this->session->set_flashdata('message','Parts Sucessfully deleted.');
+            redirect(base_url('admin/spare'));
+        }
+        else {
+            redirect(base_url('admin/spare'));
+        }
+    }
 }

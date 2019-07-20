@@ -80,8 +80,17 @@
                       <li><a href="<?= base_url('admin/vehicles/soldlist'); ?>">Sold Vehicles</a></li>
                       <li><a href="<?= base_url('admin/vehicles/booklist'); ?>">Booked Vehicles</a></li>
                     <?php endif;?>
+
+                    <?php if($this->session->userdata('type') != "admin" ) : ?>
                       <li><a href="<?= base_url('admin/products')?>">Buy Vehicles</a></li>
                       <li><a href="<?= base_url('admin/spare'); ?>">Buy Vehicles parts</a></li>
+                    <?php endif; ?>
+
+                    <?php if($this->session->userdata('type') == "admin" ) : ?>
+                      <li><a href="<?= base_url('admin/products')?>">Cart Vehicles</a></li>
+                      <li><a href="<?= base_url('admin/spare'); ?>">Vehicles parts</a></li>
+                    <?php endif; ?>
+
                     </ul>
                   </li>
                   <?php if($this->session->userdata('type') == "admin" ) : ?>

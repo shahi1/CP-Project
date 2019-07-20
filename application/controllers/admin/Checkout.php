@@ -90,11 +90,14 @@ class Checkout extends CI_Controller{
         );
         $insertOrder = $this->product->insertOrder($ordData);
         
+        
         if($insertOrder){
             // Retrieve cart data from the session
             $cartItems = $this->cart->contents();
             
             // Cart items
+            $productQty= array();
+
             $ordItemData = array();
             $i=0;
             foreach($cartItems as $item){
@@ -105,6 +108,7 @@ class Checkout extends CI_Controller{
                 $i++;
             }
             
+
             if(!empty($ordItemData)){
                 // Insert order items
                 $insertOrderItems = $this->product->insertOrderItems($ordItemData);
@@ -128,7 +132,6 @@ class Checkout extends CI_Controller{
         // Load order details view
 
         $this->load->view($this->controller.'/order-sucess', $data);
-        $this->load->view('admin/partials/admin_footer');
     }
     
 }

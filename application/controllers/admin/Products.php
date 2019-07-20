@@ -16,11 +16,10 @@ class Products extends CI_Controller{
     }
     
     function index(){
-        $data = array();
+      $data = array();
         
         // Fetch products from the database
         $data['products'] = $this->product->getRows();
-        
         // Load the product list view
         $this->load->view('admin/products/products', $data);
         $this->load->view('admin/partials/admin_footer');
@@ -28,7 +27,7 @@ class Products extends CI_Controller{
     }
     
     function addToCart($proID){
-        
+     
         // Fetch specific product by ID
         $product = $this->product->getRows($proID);
         
@@ -45,7 +44,8 @@ class Products extends CI_Controller{
         // Redirect to the cart page
         redirect('admin/cart/');
     }
-   public function add()
+
+    public function add()
     {   
         if($this->input->post('buttonSubmit')) {
             $data['message'] = '';
@@ -56,7 +56,7 @@ class Products extends CI_Controller{
                 $this->form_validation->set_rules('price', 'Price ', 'required');
                 $this->form_validation->set_rules('created', 'Created', 'required');
                 $this->form_validation->set_rules('modified', 'Modified', 'required');
-                $this->form_validation->set_rules('hand', 'Hand', 'required');
+                 $this->form_validation->set_rules('hand', 'Hand', 'required');
 
                 if($this->form_validation->run() == FALSE)
                 {
@@ -79,14 +79,14 @@ class Products extends CI_Controller{
                     $created=$this->input->post('created');
                     $modified = $this->input->post('modified');
                     $status = 1;
-                    $hand = $this->input->post('hand');
-
+                    $hand=$this->input->post('hand');
                     
                     $this->upload->do_upload('image');
                     $data = $this->upload->data('image');
                     $image= $data['file_name']; 
                     
                     $this->product->insert($quantity,$image,$name,$description,$price,$created,$modified,$status,$hand);
+
                     $this->session->set_flashdata('message','Vehicle parts Successfully Created.');
                     redirect(base_url('admin/products'));
                 
@@ -94,6 +94,20 @@ class Products extends CI_Controller{
         }
         else{
         redirect(base_url('admin/products'));
+        }
+    }
+
+    public function DeleteProducts()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){  
+             
+            $id = $this->input->post('id');
+            $this->product->delete($id);
+            $this->session->set_flashdata('message','Products Sucessfully deleted.');
+            redirect(base_url('admin/products'));
+        }
+        else {
+            redirect(base_url('admin/products'));
         }
     }
 }

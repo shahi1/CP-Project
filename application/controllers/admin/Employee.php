@@ -43,7 +43,7 @@ class Employee extends CI_Controller {
                 $u_gender = $this->input->post('u_gender');
                 $u_address = $this->input->post('u_address');
 				$this->model_employee->insert($u_email,$f_name,$l_name,$u_bday,$u_position,$u_type,$u_pass,$u_mobile,$u_gender,$u_address);
-				$this->session->set_flashdata('message','Employee Successfully Created.');
+				$this->session->set_flashdata('message','Customer Successfully Created.');
 				redirect(base_url('admin/employee'));
 			}
 			else

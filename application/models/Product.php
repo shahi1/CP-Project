@@ -31,6 +31,7 @@ class Product extends CI_Model{
 
         $this->db->insert('products', $data); 
     }
+
     public function customerList()
     {
         $this->db->select('c.name, c.email, c.phone, c.address');
@@ -53,19 +54,23 @@ class Product extends CI_Model{
     }
     
     public function getRows($id = ''){
-        $this->db->select('*');
+        $this->db->select($this->proTable.'.*, SUM(order_items.quantity) as sold');
+
         $this->db->from($this->proTable);
+        $this->db->join('order_items', 'order_items.product_id = '.$this->proTable.'.id', 'left');
+
         $this->db->where('status', '1');
         if($id){
-            $this->db->where('id', $id);
+            $this->db->where($this->proTable.'.id', $id);
+            $this->db->group_by($this->proTable.'.id');
             $query = $this->db->get();
             $result = $query->row_array();
         }else{
             $this->db->order_by('name', 'asc');
+            $this->db->group_by($this->proTable.'.id');
             $query = $this->db->get();
             $result = $query->result_array();
-        }
-        
+        }        
         // Return fetched data
         return !empty($result)?$result:false;
     }
@@ -147,5 +152,18 @@ class Product extends CI_Model{
         // Return the status
         return $insert?true:false;
     }
-    
+
+    public function update($qty, $product_id)
+    {
+        $this->db->set('qty', $qty);
+        $this->db->where('id', $product_id);
+        $this->db->update('products');
+ 
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('products');
+    }
 }

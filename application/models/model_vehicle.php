@@ -133,7 +133,7 @@ class model_vehicle extends CI_Model {
 	}
     
 
-    public function sell($v_id,$cf_name,$cl_name,$c_email,$quantity,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass)
+    public function sell($v_id,$cf_name,$cl_name,$c_email,$c_quantity,$s_price,$s_status,$c_mobile,$w_start,$w_end,$payment_type,$c_pass)
 	{
 				
 		$data = array(
@@ -149,7 +149,7 @@ class model_vehicle extends CI_Model {
                'cf_name' => $cf_name,
                'cl_name' => $cl_name,
                'c_email' => $c_email,
-               'quantity'=>$quantity,
+               'c_quantity'=>$c_quantity,
                'c_mobile' => $c_mobile,
                'w_start' => $w_start,
                'w_end' => $w_end,
@@ -185,5 +185,15 @@ class model_vehicle extends CI_Model {
         $this->db->group_by('month');
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function update($c_quantity)
+    {
+    	$data=array(
+    		'c_quantity'=>$c_quantity
+    	);
+
+    	$this->db->update('vehicles', $data);
+    	$this->db->where('vehicle_id', $vehicle_id);
     }
 }

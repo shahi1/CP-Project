@@ -32,7 +32,7 @@ CREATE TABLE `customer` (
   `cf_name` varchar(100) NOT NULL,
   `cl_name` varchar(100) NOT NULL,
   `c_email` varchar(100) NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `c_quantity` int(11) NOT NULL,
   `c_mobile` varchar(100) NOT NULL,
   `nid` varchar(100) DEFAULT NULL,
   `w_start` date NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`c_id`, `vehicle_id`, `cf_name`, `cl_name`, `c_email`,`quantity`,`c_mobile`, `nid`, `w_start`, `w_end`, `payment_type`, `invoice_id`, `c_address`, `c_pass`, `extra`) VALUES
+INSERT INTO `customer` (`c_id`, `vehicle_id`, `cf_name`, `cl_name`, `c_email`,`c_quantity`,`c_mobile`, `nid`, `w_start`, `w_end`, `payment_type`, `invoice_id`, `c_address`, `c_pass`, `extra`) VALUES
 (3, 7, 'wew', 'gasd', 'asdas@asdfasdf.co',1, '5556416556', NULL, '2016-12-29', '2017-01-25', 'Cash', NULL, NULL, '1234', NULL),
 (13, 12, 'Fqewq', 'Akter', 'asdasd@asdas.com',1, '23', NULL, '2016-12-29', '0022-02-02', 'Cash', NULL, NULL, '1234', NULL),
 (14, 8, 'sdad', 'dsad', 'dranger2011@gmail.com',1, '3133388055', NULL, '2016-12-29', '2016-11-30', 'Cash', NULL, NULL, '1234', NULL);
@@ -153,6 +153,7 @@ CREATE TABLE `vehicles` (
   `seats` int(11) NOT NULL,
   `tank` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `c_quantity` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `engine_no` int(11) NOT NULL,
   `chesis_no` int(11) NOT NULL,
@@ -308,8 +309,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-
-INSERT INTO `products` VALUES
+INSERT INTO `products` (`id`, `quantity`, `image`, `name`, `description`, `category`, `price`, `created`, `modified`, `status`, `hand`) VALUES
 (1,2,'1.jpg','R15 v3', 'This is fastest bike','bike', 30000, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1,'new'),
 (2,1,'2.jpg','ktm', 'This is fastest bike','bike', 3411, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1,'new'),
 (3,4,'3.jpg','Royal Enfield', 'This is fastest bike','bike', 23232, '2019-06-09 00:00:00', '2019-06-020 00:00:00',1,'used'),
@@ -334,6 +334,7 @@ CREATE TABLE `service` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+ `location` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
  `category` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
  `from` date NOT NULL,
  `timing` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -346,19 +347,3 @@ CREATE TABLE `blog` (
   `name` varchar(100) NOT NULL,
   `message` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `user` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
- `oauth_provider` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
- `oauth_uid` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
- `first_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
- `last_name` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
- `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
- `gender` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
- `locale` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
- `picture` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
- `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
- `created` datetime NOT NULL,
- `modified` datetime NOT NULL,
- PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

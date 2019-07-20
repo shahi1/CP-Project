@@ -11,15 +11,12 @@
         
         <?php echo form_open('login/checklogin'); ?>
             <input placeholder="Email" type="email" name="email">
-            <input placeholder="Password" type="password" name="password">
+            <input placeholder="Password" type="password" name="password" maxlength="8">
             <section class="links">
                 <button class="button"><span>LOGIN</span></button>
                 <br>
             </section>
-            <section class="links">
-                <button class="button" style="background: red;"><span>Login with Google</span></button>
-                <br><br>
-            </section>
+            <br>
             <ul style="list-style: none; text-align: center; color: white;">
                 <li> Dont have accout? <a class="color8" href="<?php echo base_url('employee/add'); ?>">SignUp</a></li>
             </ul>

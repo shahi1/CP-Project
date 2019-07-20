@@ -1,6 +1,7 @@
 <?php $this->load->view('admin/partials/admin_header.php'); ?>
 
 <div class="right_col" role="main">
+    <?php if($this->session->userdata('type') != "admin" ) : ?>
     <hr>
         <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> See nearest location</a>
 
@@ -8,12 +9,14 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="collapse" id="collapseExample">
                     <br>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d386950.6511603643!2d-73.70231446529533!3d40.738882125234106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNueva+York!5e0!3m2!1ses-419!2sus!4v1445032011908" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d386950.6511603643!2d-73.70231446529533!3d40.738882125234106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNueva+York!5e0!3m2!1ses-419!2sus!4v1445032011908" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                    <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=motor%2Cservices%2Ckathmandu&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                 <br>
                 </div>
             </div>
         </div>
         <br>
+    <?php endif;?>
     <div class="">
     <?php if($this->session->userdata('type') != "admin" ) : ?>
         <div class="page-title">
@@ -51,6 +54,12 @@
                             <input type="text" class="form-control" name="name" placeholder="Model" required>
                         </div>
                     </div>     
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" name="location" placeholder="Location" required>
+                        </div>
+                    </div>
                     <br>
                         
                     <div class="row">
@@ -95,6 +104,7 @@
                                     <th>E-mail</th>
                                      <th>Vehicle Category</th>
                                     <th>Model Name</th>
+                                    <th>Location</th>
                                     <th>Servicing Date</th>
                                     <th>Available Time</th>
 
@@ -108,6 +118,7 @@
                                         <td><?php echo $service['email']; ?></td>
                                         <td><?php echo $service['category']; ?></td>
                                         <td><?php echo $service['name']; ?></td>
+                                        <td><?php echo $service['location']; ?></td>
                                         <td><?php echo $service['from']; ?></td>                                 
                                         <td><?php echo $service['timing']; ?></td>                                                    
                                     </tr>

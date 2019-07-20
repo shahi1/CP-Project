@@ -46,7 +46,6 @@
                                     <th>Price &amp; Profit</th>
                                     <th>Date of Sale</th>
                                     <th>Warranty End</th>
-                                    <th>Quantity</th>
                                     <th>Insurance</th>
                                     <th>Engine#</th>
 									<th></th>
@@ -58,14 +57,13 @@
                                 <?php foreach($cus as $vehicle){?>
                                         <?php if($vehicle['status']=="sold") : ?>
                                             <td><?php echo $vehicle['c_id']; ?></td>
-                                            <td><?php echo "Name: ".$vehicle['cf_name']." ".$vehicle['cl_name']."<br>Email :".$vehicle['c_email']."<br>Phone: ".$vehicle['c_mobile']; ?></td>
+                                            <td><?php echo "Name: ".$vehicle['cf_name']." ".$vehicle['cl_name']."<br>Email :".$vehicle['c_email']."<br>Phone: ".$vehicle['c_mobile']."<br>Quantity: ".$vehicle['c_quantity']; ?></td>
                                             <td><?php echo $vehicle['manufacturer_name']; ?></td>
                                             <td><?php echo $vehicle['model_name']; ?></td>
                                             <td><?php echo "Price $ : ".$vehicle['buying_price']."<br>Sold $ : ".$vehicle['selling_price']."<br>Profit $ : ".($vehicle['selling_price']-$vehicle['buying_price']); ?></td>
                                             <td><?php $date = new DateTime($vehicle['w_start']); echo $date->format('m/d/Y'); ?></td>
                                             <td><?php $date = new DateTime($vehicle['w_end']); echo $date->format('m/d/Y'); ?></td>
-                                            
-                                            <td><?php echo $vehicle['quantity']; ?></td>               
+                                                         
                                              <td><?php echo $vehicle['insurance_id']; ?></td>
                                             <td><?php echo $vehicle['engine_no']; ?></td>
                                             <td>
